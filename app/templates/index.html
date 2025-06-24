@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sentiment Analyzer</title>
+  <link href="/static/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-center p-6">
+  <h1 class="text-3xl font-bold mb-6">NLP Sentiment Analyzer</h1>
+
+  <form action="/analyze" method="post" class="space-y-4">
+    <textarea name="text" rows="5" class="w-full p-2 border rounded" placeholder="Enter your text here...">{{ input_text or '' }}</textarea>
+    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Analyze</button>
+  </form>
+
+  {% if result %}
+    <div class="mt-6 text-xl">
+      <p>💡 <strong>Sentiment:</strong> {{ result['label'] }} ({{ (result['score'] * 100) | round(2) }}%)</p>
+    </div>
+  {% endif %}
+</body>
+</html>
